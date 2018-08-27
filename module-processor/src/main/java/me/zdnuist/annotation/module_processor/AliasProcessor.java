@@ -54,7 +54,7 @@ public class AliasProcessor extends AbstractProcessor{
 
   @Override
   public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-
+    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
     Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(Alias.class);
 
     for(Element element : elements){

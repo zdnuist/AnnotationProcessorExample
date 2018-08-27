@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-dontskipnonpubliclibraryclassmembers
+-printconfiguration
+-keep,allowobfuscation @interface android.support.annotation.Keep
+-keep @android.support.annotation.Keep class *
+-keepclassmembers class * { @android.support.annotation.Keep *; }
+
+#-keep class me.zdnuist.annotation.module_annotation.Alias {*;}
+#-keep @me.zdnuist.annotation.module_annotation.Alias class *
+#-keepclassmembers class * { @me.zdnuist.annotation.module_annotation.Alias *;}
+

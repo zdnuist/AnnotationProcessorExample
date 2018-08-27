@@ -10,12 +10,39 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    signingConfigs{
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            storeFile file("./keystore")
+            storePassword "zdnuist"
+            keyAlias "zdnuist"
+            keyPassword "zdnuist"
+        }
+
+        debug {
+            storeFile file("./keystore")
+            storePassword "zdnuist"
+            keyAlias "zdnuist"
+            keyPassword "zdnuist"
         }
     }
+
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+
 }
 
 dependencies {
@@ -28,4 +55,7 @@ dependencies {
 
     annotationProcessor project(':module-processor')
     implementation project(':module-annotation')
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
